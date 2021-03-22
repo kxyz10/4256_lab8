@@ -18,3 +18,48 @@ print(pentagonal_number(num))
 num = 3
 print(pentagonal_number(num))
 
+def encode(s):
+  i = 0
+  enc = ""
+  while i < len(s):
+    current = s[i]
+    previous = s[i]
+    run = 0
+    while current == previous:
+      run += 1
+      previous = current
+      i += 1
+      if(i == len(s)):
+        break
+      current = s[i]
+    enc += str(run)
+    enc += previous
+  return enc
+
+#3A4B2C
+s = "AAABBBBCC"
+print(encode(s))
+
+#1L2B1W1E15Q1C
+s = "LBBWEQQQQQQQQQQQQQQQC"
+print(encode(s))
+
+def decode(s):
+  dec = ""
+  i = 0
+  while i<len(s):
+    num = s[i]
+    i += 1
+    let = s[i]
+    i += 1
+    dec += let * int(num)
+  return dec
+
+#AAABBBBCC
+s = "3A4B2C"
+print(decode(s))
+
+#LBBWEQQQC
+s = "1L2B1W1E3Q1C"
+print(decode(s))
+
