@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def pentagonal_number(num):
   total = 1
   i = 1
@@ -62,4 +65,25 @@ print(decode(s))
 #LBBWEQQQC
 s = "1L2B1W1E3Q1C"
 print(decode(s))
+
+def is_balanced(s):
+  stack = deque()
+  for letter in s:
+    print(letter)
+    if letter == '(' or letter == "{" or letter == "[":
+      stack.append(letter)
+    if letter == ")":
+      if stack[-1] == "(":
+        stack.pop()
+    if letter == "}":
+      if stack[-1] == "{":
+        stack.pop()
+    if letter == "]":
+      if stack[-1] == "(":
+        stack.pop()
+  return len(stack) == 0
+
+#true
+s = "([])[]({})"
+print(is_balanced(s))
 
