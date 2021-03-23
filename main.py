@@ -1,6 +1,5 @@
 from collections import deque
-
-
+import random
 def pentagonal_number(num):
   total = 1
   i = 1
@@ -90,3 +89,22 @@ print(is_balanced(s))
 s = "([])[({})"
 print(is_balanced(s))
 
+def monte_carlo(points):
+  pi = 0
+  points_in_circle = 0
+  i = 0
+  while i < points:
+    x = random.random()
+    y = random.random()
+    distance = (((.5-x)**2) + ((.5-y)**2))**(1/2)
+    if distance < .5:
+      points_in_circle += 1
+    i += 1
+  pi = 4 * (points_in_circle/points)
+  return pi
+
+#should be close to 3.14
+print(monte_carlo(1000))
+
+#should be close to 3.14
+print(monte_carlo(100))
